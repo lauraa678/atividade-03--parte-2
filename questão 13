@@ -1,0 +1,23 @@
+#include <stdio.h>
+#include <locale.h>
+
+int main() {
+	setlocale(LC_ALL, "");
+    int N, i;
+    unsigned long long int t1 = 0, t2 = 1, nextTerm;
+
+    printf("Digite o número de termos: ");
+    scanf("%d", &N);
+
+    printf("Sequência de Fibonacci: ");
+
+    for (i = 1; i <= N; ++i) {
+        printf("%llu ", t1);
+        nextTerm = t1 + t2;
+        t1 = t2;
+        t2 = nextTerm;
+    }
+
+    printf("\n");
+    return 0;
+}
