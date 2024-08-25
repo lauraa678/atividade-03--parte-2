@@ -1,0 +1,26 @@
+#include <stdio.h>
+#include <locale.h>
+
+int main() {
+	setlocale(LC_ALL, "");
+    int num1, num2, temp;
+
+    // Solicita ao usuário que insira dois números inteiros
+    printf("Digite o primeiro número: ");
+    scanf("%d", &num1);
+
+    printf("Digite o segundo número: ");
+    scanf("%d", &num2);
+
+    // Algoritmo de Euclides para calcular o MDC
+    while (num2 != 0) {
+        temp = num2;
+        num2 = num1 % num2;
+        num1 = temp;
+    }
+
+    // Exibe o MDC
+    printf("O MDC é %d\n", num1);
+
+    return 0;
+}
