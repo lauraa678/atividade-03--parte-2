@@ -1,0 +1,57 @@
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+
+void removeEspacos(char str[]) {
+    int i, j = 0;
+    char temp[strlen(str)];
+    
+    for (i = 0; str[i] != '\0'; i++) {
+        if (str[i] != ' ') {
+            temp[j++] = str[i];
+        }
+    }
+    temp[j] = '\0';
+    strcpy(str, temp);
+}
+
+void toLowerCase(char str[]) {
+    for (int i = 0; str[i] != '\0'; i++) {
+        str[i] = tolower(str[i]);
+    }
+}
+
+int ehPalindromo(char str[]) {
+    int len = strlen(str);
+    
+    for (int i = 0; i < len / 2; i++) {
+        if (str[i] != str[len - 1 - i]) {
+            return 0; // Não é palíndromo
+        }
+    }
+    return 1; // É palíndromo
+}
+
+int main() {
+    char entrada[100];
+
+    // Solicita ao usuário que insira um número ou palavra
+    printf("Digite um número ou palavra: ");
+    fgets(entrada, sizeof(entrada), stdin);
+    
+    // Remove o caractere de nova linha
+    entrada[strcspn(entrada, "\n")] = '\0';
+
+    // Remove espaços e converte para minúsculas
+    removeEspacos(entrada);
+    toLowerCase(entrada);
+
+    // Verifica se é palíndromo
+    if (ehPalindromo(entrada)) {
+        printf("'%s' é um palíndromo.\n", entrada);
+    } else {
+        printf("'%s' não é um palíndromo.\n", entrada);
+    }
+
+    return 0;
+}
